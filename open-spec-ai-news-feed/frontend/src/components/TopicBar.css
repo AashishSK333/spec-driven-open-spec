@@ -1,0 +1,73 @@
+.topic-bar {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.topic-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.topic-chip.enabled {
+  background: #228be6;
+  color: white;
+}
+
+.topic-chip.disabled {
+  background: #dee2e6;
+  color: #868e96;
+}
+
+.chip-name {
+  margin-right: 0.5rem;
+}
+
+.chip-edit,
+.chip-delete {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  opacity: 0.7;
+  font-size: 1rem;
+}
+
+.chip-edit:hover,
+.chip-delete:hover {
+  opacity: 1;
+}
+
+.chip-delete.confirm {
+  color: #fa5252;
+  opacity: 1;
+}
+
+.add-topic-btn {
+  padding: 0.5rem 1rem;
+  border: 2px dashed #adb5bd;
+  background: transparent;
+  border-radius: 2rem;
+  color: #495057;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.add-topic-btn:hover {
+  border-color: #228be6;
+  color: #228be6;
+}

@@ -1,0 +1,65 @@
+.news-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.feed-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+  color: #868e96;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e9ecef;
+  border-top-color: #228be6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.feed-status.error {
+  color: #c92a2a;
+}
+
+.error-message {
+  margin-bottom: 1rem;
+}
+
+.retry-btn {
+  padding: 0.625rem 1.25rem;
+  background: #228be6;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.retry-btn:hover {
+  background: #1c7ed6;
+}
+
+.feed-status.empty p {
+  margin: 0;
+}
+
+.empty-hint {
+  font-size: 0.875rem;
+  margin-top: 0.5rem !important;
+}
