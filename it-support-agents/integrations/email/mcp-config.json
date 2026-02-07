@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "email": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@your-org/mcp-email-server"
+      ],
+      "env": {
+        "EMAIL_SMTP_HOST": "${EMAIL_SMTP_HOST}",
+        "EMAIL_SMTP_PORT": "${EMAIL_SMTP_PORT}",
+        "EMAIL_FROM_ADDRESS": "${EMAIL_FROM_ADDRESS}",
+        "EMAIL_AUTH_USER": "${EMAIL_AUTH_USER}",
+        "EMAIL_AUTH_TOKEN": "${EMAIL_AUTH_TOKEN}"
+      },
+      "description": "Email MCP server for sending notifications and reading inbox. Used as a fallback notification channel when Slack is unavailable or for email-only recipients. Set the environment variables above before use."
+    }
+  },
+  "notes": {
+    "setup": "1. Set EMAIL_SMTP_HOST to your SMTP server (e.g., smtp.office365.com, smtp.gmail.com). 2. Set EMAIL_SMTP_PORT (typically 587 for TLS). 3. Set EMAIL_FROM_ADDRESS to the sender address (e.g., it-support-agent@your-org.com). 4. Set EMAIL_AUTH_USER and EMAIL_AUTH_TOKEN for SMTP authentication. 5. Ensure the from address is authorized to send on behalf of IT Support.",
+    "expected_tools": [
+      "send_email",
+      "get_inbox"
+    ],
+    "tool_descriptions": {
+      "send_email": "Send an email to specified recipients (write operation — always requires human approval at L1-L2)",
+      "get_inbox": "Read recent emails from the IT support inbox (read operation)"
+    },
+    "level_1_permissions": "At Autonomy Level 1: get_inbox only. send_email requires human execution — agent drafts the email.",
+    "level_2_permissions": "At Autonomy Level 2: get_inbox allowed. send_email requires explicit human approval before each send.",
+    "level_3_permissions": "At Autonomy Level 3: send_email enabled for internal recipients only. External recipients still require human approval.",
+    "level_4_permissions": "At Autonomy Level 4: send_email for internal recipients. External recipients always require human approval.",
+    "safety": "Email sending ALWAYS requires human approval for external recipients at ALL autonomy levels. The agent must never send emails outside the organization without explicit confirmation."
+  }
+}

@@ -1,0 +1,74 @@
+# Staging Environment Configuration
+
+environment: staging
+active_autonomy_level: 2                # Level 2 (Supervised) — test write operations
+
+integrations:
+  jira:
+    instance: https://your-org-staging.atlassian.net
+    project_key: ITSUP-STG
+    auth_method: oauth
+    issue_types:
+      incident: Incident
+      service_request: Service Request
+      change: Change Request
+
+  monitoring:
+    provider: your-monitoring-tool
+    api_base: https://monitoring-staging.your-org.com
+    auth_method: api_key
+
+  slack:
+    workspace: your-org
+    default_channel: "#it-ops-staging"
+    bot_name: IT Support Agent (Staging)
+
+  # cmdb:
+  #   provider: your-cmdb-tool
+  #   api_base: https://cmdb-staging.your-org.com
+
+# SLA definitions (production-like targets for realistic testing)
+sla:
+  priorities:
+    1:
+      name: Critical
+      response_time_minutes: 15
+      resolution_time_hours: 4
+    2:
+      name: High
+      response_time_minutes: 30
+      resolution_time_hours: 8
+    3:
+      name: Medium
+      response_time_minutes: 120
+      resolution_time_hours: 24
+    4:
+      name: Low
+      response_time_minutes: 480
+      resolution_time_hours: 72
+
+# System health thresholds (same as production)
+thresholds:
+  cpu_warning_percent: 80
+  cpu_critical_percent: 95
+  memory_warning_percent: 85
+  memory_critical_percent: 95
+  disk_warning_percent: 80
+  disk_critical_percent: 90
+  response_time_warning_ms: 2000
+  response_time_critical_ms: 5000
+
+# Staging-specific settings
+staging_notes:
+  purpose: "Validate Level 2 autonomy (supervised write operations) before promoting to production."
+  differences_from_production:
+    - "Autonomy Level 2 — agent can create P3/P4 tickets, post to Slack, auto-categorize"
+    - "Uses staging ITSM instance — no impact on production tickets"
+    - "Uses staging Slack channel (#it-ops-staging)"
+    - "SLA targets match production for realistic testing"
+  testing_checklist:
+    - "Run /triage with a test incident — verify auto-categorization at L2"
+    - "Run /morning-check — verify report posting to staging channel"
+    - "Run /status — verify dashboard data from staging ITSM"
+    - "Run /escalate — verify notification routing to staging channels"
+    - "Verify all write operations include agent attribution in work notes"
