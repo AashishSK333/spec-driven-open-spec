@@ -1,0 +1,70 @@
+# Jira Service Management Field Mappings
+#
+# Maps framework concepts to Jira field names and values.
+# Update these mappings to match your JSM project configuration.
+
+# Issue type mapping
+issue_types:
+  incident: "Incident"              # JSM issue type for incidents
+  service_request: "Service Request" # JSM issue type for service requests
+  change: "Change"                  # JSM issue type for change requests
+  problem: "Problem"                # JSM issue type for problem records
+
+# Priority mapping (framework priority → Jira priority name)
+priorities:
+  1: "Critical"                     # P1 → Jira "Critical" or "Highest"
+  2: "High"                         # P2 → Jira "High"
+  3: "Medium"                       # P3 → Jira "Medium"
+  4: "Low"                          # P4 → Jira "Low"
+
+# Category mapping (framework category → Jira component or label)
+# Adjust based on whether you use Components, Labels, or a custom field
+category_field: "components"         # Options: "components", "labels", "customfield_XXXXX"
+categories:
+  "Infrastructure > Server": "Infrastructure"
+  "Infrastructure > Network": "Network"
+  "Infrastructure > Storage": "Storage"
+  "Infrastructure > Cloud": "Cloud"
+  "Application > Web": "Web Application"
+  "Application > API": "API"
+  "Application > Database": "Database"
+  "Application > Middleware": "Middleware"
+  "Security": "Security"
+  "End User > Desktop": "Desktop Support"
+  "End User > Access": "Access Management"
+  "Performance": "Performance"
+  "Unclassified": "Unclassified"
+
+# Status mapping (framework status → Jira workflow transitions)
+statuses:
+  new: "Open"
+  in_progress: "In Progress"
+  pending: "Waiting for Customer"
+  escalated: "Escalated"
+  resolved: "Resolved"
+  closed: "Closed"
+
+# Resolution category mapping (used in ticket resolution)
+resolution_categories:
+  config_change: "Configuration Change"
+  service_restart: "Service Restart"
+  capacity: "Capacity Adjustment"
+  code_fix: "Code Fix"
+  network: "Network Fix"
+  external: "External Resolution"
+  user_error: "User Error"
+  monitoring_false_positive: "False Positive"
+  unknown: "Unknown"
+
+# Custom fields (update IDs to match your JSM configuration)
+custom_fields:
+  resolution_category: "customfield_10100"    # Custom field for resolution tag
+  root_cause: "customfield_10101"             # Custom field for root cause
+  affected_services: "customfield_10102"      # Custom field for affected service list
+  recurrence_risk: "customfield_10103"        # Custom field for recurrence risk
+  confidence_score: "customfield_10104"       # Custom field for agent confidence
+
+# SLA fields (these are typically auto-configured in JSM)
+sla_fields:
+  time_to_first_response: "Time to first response"
+  time_to_resolution: "Time to resolution"

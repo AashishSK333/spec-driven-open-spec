@@ -1,0 +1,49 @@
+# Development Environment Configuration
+
+environment: development
+active_autonomy_level: 3                # More permissive for testing
+
+integrations:
+  jira:
+    instance: https://your-org-dev.atlassian.net
+    project_key: ITSUP_DEV
+    auth_method: basic
+
+  monitoring:
+    provider: your-monitoring-tool
+    api_base: https://monitoring-dev.your-org.com
+    auth_method: api_key
+
+  slack:
+    workspace: your-org-dev
+    default_channel: "#it-ops-test"
+    bot_name: IT Support Agent (Dev)
+
+sla:
+  priorities:
+    1:
+      name: Critical
+      response_time_minutes: 60
+      resolution_time_hours: 24
+    2:
+      name: High
+      response_time_minutes: 120
+      resolution_time_hours: 48
+    3:
+      name: Medium
+      response_time_minutes: 480
+      resolution_time_hours: 72
+    4:
+      name: Low
+      response_time_minutes: 1440
+      resolution_time_hours: 168
+
+  thresholds:
+    cpu_warning_percent: 80
+    cpu_critical_percent: 95
+    memory_warning_percent: 85
+    memory_critical_percent: 95
+    disk_warning_percent: 80
+    disk_critical_percent: 90
+    response_time_warning_ms: 5000
+    response_time_critical_ms: 10000

@@ -1,0 +1,89 @@
+# IT Support Agent Framework — Escalation Matrix
+
+# Routing rules by incident category.
+# The agent uses this to determine who to escalate to and how.
+
+categories:
+  infrastructure:
+    network:
+      team: network-ops
+      slack_channel: "#network-ops"
+      oncall: pagerduty://network-ops
+    server:
+      team: server-ops
+      slack_channel: "#server-ops"
+      oncall: pagerduty://server-ops
+    storage:
+      team: storage-ops
+      slack_channel: "#storage-ops"
+      oncall: pagerduty://storage-ops
+    cloud:
+      team: cloud-ops
+      slack_channel: "#cloud-ops"
+      oncall: pagerduty://cloud-ops
+
+  application:
+    web:
+      team: web-platform
+      slack_channel: "#web-platform"
+    api:
+      team: api-platform
+      slack_channel: "#api-platform"
+    database:
+      team: dba
+      slack_channel: "#database-ops"
+      oncall: pagerduty://dba
+    middleware:
+      team: middleware-ops
+      slack_channel: "#middleware-ops"
+
+  security:
+    default:
+      team: security-ops
+      slack_channel: "#security-incidents"
+      oncall: pagerduty://security-ops
+      always_escalate: true
+
+  end_user:
+    desktop:
+      team: desktop-support
+      slack_channel: "#desktop-support"
+    access:
+      team: identity-access
+      slack_channel: "#access-mgmt"
+    email:
+      team: messaging-ops
+      slack_channel: "#messaging-ops"
+
+# Escalation chain — used when initial assignment doesn't resolve within SLA.
+escalation_chain:
+  - level: 1
+    target: assigned_team_member
+    notify_via: [slack, email]
+    description: Initial assignment to team member
+
+  - level: 2
+    target: team_lead
+    notify_via: [slack, email, phone]
+    trigger: sla_response_breached
+    description: Team lead notified when response SLA is breached
+
+  - level: 3
+    target: it_manager
+    notify_via: [phone, email]
+    trigger: sla_resolution_breached
+    description: IT manager notified when resolution SLA is breached
+
+  - level: 4
+    target: it_director
+    notify_via: [phone, email]
+    trigger: sla_resolution_breached_2x
+    description: IT director notified when resolution SLA is breached by 2x
+
+# Rules
+rules:
+  - Never escalate without attaching diagnostic information
+  - Never escalate to a team already working the issue
+  - Always include what has been tried and ruled out
+  - Always set follow-up timer for escalation response
+  - Priority 1 incidents skip level 1 and go directly to team lead + on-call

@@ -1,0 +1,34 @@
+{
+  "mcpServers": {
+    "jira": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic/mcp-jira-server"
+      ],
+      "env": {
+        "JIRA_INSTANCE_URL": "${JIRA_INSTANCE_URL}",
+        "JIRA_AUTH_TOKEN": "${JIRA_AUTH_TOKEN}",
+        "JIRA_USER_EMAIL": "${JIRA_USER_EMAIL}",
+        "JIRA_PROJECT_KEY": "${JIRA_PROJECT_KEY}"
+      },
+      "description": "Jira Service Management MCP server for ticket operations. Provides tools for creating, reading, updating, and querying JSM tickets. Set the environment variables above before use."
+    }
+  },
+  "notes": {
+    "setup": "1. Set JIRA_INSTANCE_URL to your Atlassian instance (e.g., https://your-org.atlassian.net). 2. Generate an API token at https://id.atlassian.com/manage-profile/security/api-tokens. 3. Set JIRA_AUTH_TOKEN to the generated token. 4. Set JIRA_USER_EMAIL to the email associated with the API token. 5. Set JIRA_PROJECT_KEY to your IT support project key.",
+    "expected_tools": [
+      "jira_get_issue",
+      "jira_create_issue",
+      "jira_update_issue",
+      "jira_search_issues",
+      "jira_add_comment",
+      "jira_transition_issue",
+      "jira_get_transitions"
+    ],
+    "level_1_permissions": "At Autonomy Level 1, only jira_get_issue and jira_search_issues should be allowed. All write operations (create, update, comment, transition) require human execution.",
+    "level_2_permissions": "At Autonomy Level 2, add jira_create_issue (P3/P4 only), jira_add_comment, and jira_update_issue. P1/P2 creation still requires approval.",
+    "level_3_permissions": "At Autonomy Level 3, all tools are available. jira_transition_issue enabled for closing tickets after verification.",
+    "level_4_permissions": "At Autonomy Level 4, all tools fully autonomous."
+  }
+}

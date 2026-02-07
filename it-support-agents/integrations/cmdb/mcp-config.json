@@ -1,0 +1,52 @@
+{
+  "mcpServers": {
+    "cmdb": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@your-org/mcp-cmdb-server"
+      ],
+      "env": {
+        "CMDB_API_URL": "${CMDB_API_URL}",
+        "CMDB_API_KEY": "${CMDB_API_KEY}",
+        "CMDB_PROVIDER": "${CMDB_PROVIDER}"
+      },
+      "description": "CMDB (Configuration Management Database) MCP server for querying configuration items, dependencies, and service maps. Read-only at all autonomy levels. Set the environment variables above before use."
+    }
+  },
+  "notes": {
+    "setup": "1. Set CMDB_PROVIDER to your CMDB tool (servicenow, device42, i-doit, custom). 2. Set CMDB_API_URL to the API endpoint. 3. Set CMDB_API_KEY to your read-only API key. 4. Ensure the API key has read-only permissions — CMDB modifications should only be made through the CMDB's native interface.",
+    "expected_tools": [
+      "query_ci",
+      "get_dependencies",
+      "get_ci_details"
+    ],
+    "tool_descriptions": {
+      "query_ci": "Search for configuration items by name, type, IP address, or other attributes",
+      "get_dependencies": "Get upstream and downstream dependencies for a configuration item",
+      "get_ci_details": "Get detailed information about a specific CI (owner, criticality, environment, location, etc.)"
+    },
+    "ci_types": [
+      "server",
+      "database",
+      "application",
+      "network_device",
+      "load_balancer",
+      "storage",
+      "virtual_machine",
+      "container",
+      "service"
+    ],
+    "ci_criticality_levels": [
+      "business-critical",
+      "standard",
+      "non-critical",
+      "development"
+    ],
+    "level_1_permissions": "At Autonomy Level 1: All tools available (read-only).",
+    "level_2_permissions": "At Autonomy Level 2: All tools available (read-only).",
+    "level_3_permissions": "At Autonomy Level 3: All tools available (read-only).",
+    "level_4_permissions": "At Autonomy Level 4: All tools available (read-only).",
+    "safety": "CMDB access is READ-ONLY at all autonomy levels. The agent should never modify CMDB records. All CMDB updates must go through the organization's change management process."
+  }
+}

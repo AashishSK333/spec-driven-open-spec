@@ -1,0 +1,39 @@
+{
+  "mcpServers": {
+    "slack": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic/mcp-slack-server"
+      ],
+      "env": {
+        "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
+        "SLACK_WORKSPACE": "${SLACK_WORKSPACE}"
+      },
+      "description": "Slack MCP server for posting notifications, reading channels, and sending messages. Used by the notification skill for team communication. Set the environment variables above before use."
+    }
+  },
+  "notes": {
+    "setup": "1. Create a Slack App at https://api.slack.com/apps. 2. Add Bot Token Scopes: chat:write, channels:read, channels:history, groups:read. 3. Install the app to your workspace. 4. Set SLACK_BOT_TOKEN to the Bot User OAuth Token (xoxb-...). 5. Set SLACK_WORKSPACE to your workspace name. 6. Invite the bot to the channels it needs to post in.",
+    "expected_tools": [
+      "post_message",
+      "get_channels",
+      "get_messages"
+    ],
+    "tool_descriptions": {
+      "post_message": "Post a message to a Slack channel (write operation)",
+      "get_channels": "List available channels the bot has access to (read)",
+      "get_messages": "Read recent messages from a channel (read)"
+    },
+    "default_channels": {
+      "it_support": "#it-ops",
+      "major_incidents": "#major-incidents",
+      "morning_checks": "#it-morning-checks",
+      "management": "#it-management"
+    },
+    "level_1_permissions": "At Autonomy Level 1: get_channels and get_messages only. No posting — agent drafts messages for human to send.",
+    "level_2_permissions": "At Autonomy Level 2: post_message enabled for configured default channels. No @here or @channel for routine messages.",
+    "level_3_permissions": "At Autonomy Level 3: All tools available. Can post to any channel the bot is in.",
+    "level_4_permissions": "At Autonomy Level 4: All tools fully autonomous. Can use @here for critical alerts."
+  }
+}

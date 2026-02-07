@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "monitoring": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@your-org/mcp-monitoring-server"
+      ],
+      "env": {
+        "MONITORING_API_URL": "${MONITORING_API_URL}",
+        "MONITORING_API_KEY": "${MONITORING_API_KEY}",
+        "MONITORING_PROVIDER": "${MONITORING_PROVIDER}"
+      },
+      "description": "Generic monitoring MCP server for querying alerts, server status, metrics, and logs. Designed to work with Datadog, Prometheus, Nagios, Zabbix, or custom monitoring via an adapter layer. Set the environment variables above before use."
+    }
+  },
+  "notes": {
+    "setup": "1. Set MONITORING_PROVIDER to your monitoring tool (datadog, prometheus, nagios, zabbix). 2. Set MONITORING_API_URL to the API endpoint. 3. Set MONITORING_API_KEY to your API key or token. 4. If using Datadog: MONITORING_API_URL=https://api.datadoghq.com. 5. If using Prometheus: MONITORING_API_URL=http://prometheus-server:9090.",
+    "expected_tools": [
+      "get_alerts",
+      "get_server_status",
+      "get_metrics",
+      "get_logs",
+      "acknowledge_alert"
+    ],
+    "tool_descriptions": {
+      "get_alerts": "Fetch active alerts, optionally filtered by severity, host, or time range",
+      "get_server_status": "Get current status of a server (up/down, services, last check time)",
+      "get_metrics": "Query metrics for a host (CPU, memory, disk, network) with time range",
+      "get_logs": "Query centralized logs by host, service, time range, and pattern filter",
+      "acknowledge_alert": "Acknowledge an alert (write operation — marks alert as seen)"
+    },
+    "level_1_permissions": "At Autonomy Level 1: get_alerts, get_server_status, get_metrics, get_logs allowed (read-only). acknowledge_alert requires human execution.",
+    "level_2_permissions": "At Autonomy Level 2: All read tools plus acknowledge_alert for routine alerts.",
+    "level_3_permissions": "At Autonomy Level 3: All tools available.",
+    "level_4_permissions": "At Autonomy Level 4: All tools fully autonomous."
+  }
+}

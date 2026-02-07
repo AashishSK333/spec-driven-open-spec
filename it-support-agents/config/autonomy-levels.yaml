@@ -1,0 +1,110 @@
+# IT Support Agent Framework — Autonomy Levels
+
+# Each level defines what the agent can do independently vs. what requires human approval.
+# The active level is set in framework.yaml (active_autonomy_level).
+
+levels:
+  1:
+    name: Assisted
+    description: Agent gathers information and suggests actions. Human executes everything.
+    capabilities:
+      - read_monitoring_data
+      - query_tickets
+      - search_knowledge_base
+      - analyze_logs
+      - generate_reports
+      - draft_ticket_updates
+      - suggest_categorization
+      - suggest_prioritization
+    requires_approval:
+      - ticket_creation
+      - ticket_update
+      - ticket_closure
+      - service_restart
+      - notification_send
+      - escalation
+      - any_write_action
+
+  2:
+    name: Supervised
+    description: Agent executes routine tasks. Human oversees and approves non-routine actions.
+    capabilities:
+      - all_level_1
+      - auto_categorize_incidents
+      - auto_prioritize_incidents
+      - create_tickets_p3_p4
+      - update_ticket_work_notes
+      - send_routine_notifications
+    requires_approval:
+      - create_tickets_p1_p2
+      - ticket_closure
+      - service_restart
+      - escalation
+      - non_routine_notification
+
+  3:
+    name: Semi-Autonomous
+    description: Agent handles known patterns end-to-end. Human involved for exceptions only.
+    capabilities:
+      - all_level_2
+      - create_all_tickets
+      - execute_known_runbooks
+      - restart_services_known_patterns
+      - close_tickets_after_verification
+      - autonomous_morning_checks
+      - send_all_notifications
+    requires_approval:
+      - novel_remediation
+      - service_restart_unknown_pattern
+      - escalation_to_external
+      - infrastructure_changes
+
+  4:
+    name: Autonomous
+    description: Full automation for known patterns. Human provides governance only.
+    capabilities:
+      - all_level_3
+      - proactive_detection
+      - auto_escalation
+      - cross_system_correlation
+      - self_tuning_thresholds
+      - auto_generate_runbook_drafts
+    requires_approval:
+      - novel_remediation
+      - infrastructure_changes
+      - access_provisioning_elevated
+      - threshold_adjustment_above_10_percent
+
+# Transition criteria between levels.
+# All criteria must be met before advancing.
+transitions:
+  1_to_2:
+    metrics:
+      categorization_accuracy: ">= 95%"
+      false_positive_rate: "<= 5%"
+      human_override_rate: "<= 10%"
+    minimum_duration_days: 90
+    minimum_incidents_handled: 500
+
+  2_to_3:
+    metrics:
+      runbook_success_rate: ">= 98%"
+      sla_compliance: ">= 95%"
+      escalation_accuracy: ">= 90%"
+    minimum_duration_days: 180
+    minimum_incidents_handled: 1000
+
+  3_to_4:
+    metrics:
+      end_to_end_resolution_rate: ">= 95%"
+      mttr_improvement_vs_baseline: ">= 30%"
+      severity_misclassification_count: 0
+    minimum_duration_days: 365
+    minimum_incidents_handled: 2000
+
+# Confidence thresholds for autonomous actions
+confidence:
+  auto_categorize: 90
+  auto_prioritize: 90
+  auto_execute_runbook: 95
+  auto_close_ticket: 95
