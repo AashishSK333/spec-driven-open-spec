@@ -1,20 +1,49 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+# Project context
+context: |
+  Tech stack: Python FastAPI (backend), React + Vite (frontend)
+  We use conventional commits
+  Domain: AI-powered news aggregation
+
+# MCP Integration
+# Configure MCP servers for extended capabilities
+mcp:
+  enabled: true
+  servers:
+    github:
+      description: GitHub repository operations (commit, push, PR)
+      required_env: GITHUB_TOKEN
+      capabilities:
+        - create_or_update_file
+        - push_files
+        - create_branch
+        - create_pull_request
+    filesystem:
+      description: File system operations within project scope
+      capabilities:
+        - read_file
+        - write_file
+        - list_directory
+
+# Post-archive hooks
+# Actions to perform after archiving a change
+hooks:
+  post_archive:
+    - skill: openspec-github-push
+      description: Push archived changes to GitHub
+      optional: true
+      prompt_user: true
 
 # Per-artifact rules (optional)
 # Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+rules:
+  proposal:
+    - Keep proposals focused and under 500 words
+    - Always include a "Non-goals" section
+  tasks:
+    - Break tasks into chunks of max 2 hours
+    - Use checkbox format for trackable items
+  archive:
+    - Sync delta specs before archiving (recommended)
+    - Consider pushing to GitHub after archive
