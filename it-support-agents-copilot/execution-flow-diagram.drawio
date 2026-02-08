@@ -1,0 +1,186 @@
+<mxfile host="65bd71144e">
+    <diagram name="Incident Responder Flow" id="flow">
+        <mxGraphModel dx="1838" dy="737" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1400" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="User Input&#xa;@incident-responder investigate server-web-01 high CPU" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="40" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="GitHub Copilot Extension" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="140" width="240" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Load Agent Definition&#xa;.github/agents/incident-responder.agent.md" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="230" width="240" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="3" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Read Framework Config&#xa;config/framework.yaml&#xa;• autonomy_level: 1&#xa;• environment: prod" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="340" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Read Autonomy Specs&#xa;config/autonomy-levels.yaml&#xa;• L1 capabilities&#xa;• Approval requirements" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="340" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Read Behavioral Specs&#xa;specs/incident-management.md&#xa;• Categorization rules&#xa;• Priority criteria" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="340" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="5" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="incident-triage&#xa;• Parse context&#xa;• Query CMDB&#xa;• Search knowledge&#xa;• Assign priority&#xa;• Confidence score" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="340" width="180" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="server-health&#xa;• Check connectivity&#xa;• Check services&#xa;• CPU/Memory/Disk&#xa;• Compare thresholds&#xa;• Status: CRITICAL" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="340" width="180" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="log-analysis&#xa;• Query logs (30min)&#xa;• Error patterns&#xa;• Stack traces&#xa;• Timeline&#xa;• Correlation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="340" width="180" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="knowledge-search&#xa;• Search runbooks/&#xa;• Search knowledge/&#xa;• Match patterns&#xa;• Find procedures" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="1280" y="340" width="180" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="5" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Jira MCP&#xa;• get_issue&#xa;• search_issues" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="540" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Monitoring MCP&#xa;• get_metrics&#xa;• get_logs&#xa;• get_alerts" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="540" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="CMDB MCP&#xa;• query_ci&#xa;• get_dependencies" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="540" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Slack MCP&#xa;• get_channels&#xa;• get_messages" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="540" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="Knowledge Base&#xa;runbooks/ | knowledge/&#xa;specs/ | templates/" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="540" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#999999;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="11" target="16" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="640" y="410"/>
+                            <mxPoint x="640" y="460"/>
+                            <mxPoint x="310" y="460"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#999999;dashed=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="12" target="17" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="925" y="490"/>
+                            <mxPoint x="470" y="490"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#999999;dashed=1;" parent="1" source="11" target="18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#999999;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="14" target="20" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Analysis &amp; Synthesis&#xa;• Combine skill results&#xa;• Apply categorization rules&#xa;• Calculate confidence scores&#xa;• Identify root cause&#xa;• Recommend actions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="660" width="320" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="11" target="25" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="710" y="610"/>
+                            <mxPoint x="710" y="610"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="12" target="25" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="970" y="510"/>
+                            <mxPoint x="870" y="510"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="13" target="25" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1170" y="685"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="14" target="25" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1370" y="710"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="Check Autonomy Level" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="800" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="25" target="30" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Level 1: Assisted&#xa;&#xa;Output:&#xa;• Structured triage report&#xa;• Health status: CRITICAL&#xa;  - CPU: 95% (threshold: 80%)&#xa;• Log analysis results&#xa;• Matching runbooks found&#xa;&#xa;Recommendations [YOU EXECUTE]:&#xa;1. Check process list&#xa;2. Review application logs&#xa;3. Consider service restart&#xa;4. Monitor for 15 minutes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="960" width="300" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="Level 2-4: Supervised/Autonomous&#xa;&#xa;Output:&#xa;• All Level 1 outputs&#xa;&#xa;Automated Actions:&#xa;• Ticket INC0012346 created (L2+)&#xa;• Category: Infrastructure &gt; Server&#xa;• Priority: P2 (90% confidence)&#xa;• Notification sent to #it-ops (L2+)&#xa;• Execute known runbook (L3+)&#xa;• Service restart if safe (L3+)&#xa;• Verify &amp; auto-close (L3+)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="960" width="300" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="Level 1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontStyle=1;" parent="1" source="30" target="32" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="Level 2-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;fontStyle=1;" parent="1" source="30" target="33" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="Potential Handoffs" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=12;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="970" width="440" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="@escalation-manager&#xa;If P1 or P2 &gt;30min" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" parent="36" vertex="1">
+                    <mxGeometry x="20" y="40" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="@knowledge-curator&#xa;If pattern recurs 3+ times" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" parent="36" vertex="1">
+                    <mxGeometry x="220" y="40" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#999999;dashed=1;" parent="1" source="32" target="36" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#999999;dashed=1;" parent="1" source="33" target="36" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="LEGEND" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=11;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="640" width="180" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="User Input" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="41" vertex="1">
+                    <mxGeometry x="10" y="40" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="Configuration" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="41" vertex="1">
+                    <mxGeometry x="10" y="80" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="Skills" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" parent="41" vertex="1">
+                    <mxGeometry x="10" y="120" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="MCP Servers" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="41" vertex="1">
+                    <mxGeometry x="10" y="160" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="Decision" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" parent="41" vertex="1">
+                    <mxGeometry x="50" y="200" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="IT Support Agent Framework&#xa;Execution Flow&#xa;&#xa;@incident-responder investigate&#xa;server-web-01 high CPU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontSize=14;fontStyle=1;fontColor=#ffffff;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="40" width="360" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="Skills Execute in Parallel" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=2;fontColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="310" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="MCP Server Integrations" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=2;fontColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="510" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="Configuration Loading" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=2;fontColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="310" width="140" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

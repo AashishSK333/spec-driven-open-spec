@@ -4,7 +4,7 @@ Orchestrates the end-to-end service request lifecycle from intake to completion 
 
 ## References
 
-- **Agent**: `agents/request-fulfiller.md`
+- **Agent**: `.github/agents/request-fulfiller.agent.md`
 - **Spec**: `specs/request-management.md`
 - **Config**: `config/framework.yaml`, `config/autonomy-levels.yaml`
 - **Integrations**: `integrations/jira/field-mappings.yaml`

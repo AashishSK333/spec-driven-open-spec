@@ -11,7 +11,7 @@ tools:
   - sla-check
 ---
 
-Triage an incident by gathering diagnostics, categorizing, and producing actionable recommendations. This command activates the **Incident Responder** agent behavior defined in `agents/incident-responder.md`.
+Triage an incident by gathering diagnostics, categorizing, and producing actionable recommendations. This command activates the **Incident Responder** agent behavior defined in `.github/agents/incident-responder.agent.md`.
 
 **Input:** An incident ticket ID (e.g., `INC0012345`), a monitoring alert description, or a free-text problem statement. User input: `$input`
 

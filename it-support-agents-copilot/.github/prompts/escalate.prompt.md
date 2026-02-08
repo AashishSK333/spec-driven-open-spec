@@ -10,7 +10,7 @@ tools:
   - sla-check
 ---
 
-Route an incident to the correct specialist team with a complete context package, ensuring smooth handover and SLA tracking. This command activates the **Escalation Manager** agent behavior defined in `agents/escalation-manager.md`.
+Route an incident to the correct specialist team with a complete context package, ensuring smooth handover and SLA tracking. This command activates the **Escalation Manager** agent behavior defined in `.github/agents/escalation-manager.agent.md`.
 
 **Input:** An incident ticket ID (e.g., `INC0012345`) and optionally the target team or reason for escalation. User input: `$input`
 

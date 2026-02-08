@@ -2,7 +2,7 @@
 
 End-to-end workflow for handling an incident from detection through resolution and post-incident review.
 
-**Active Agent**: `agents/incident-responder.md`
+**Active Agent**: `.github/agents/incident-responder.agent.md`
 **Behavioral Spec**: `specs/incident-management.md`
 **Autonomy Config**: `config/autonomy-levels.yaml`
 

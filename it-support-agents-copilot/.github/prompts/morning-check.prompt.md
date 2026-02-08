@@ -14,7 +14,7 @@ tools:
   - ticket-management
 ---
 
-Execute the daily morning health check sequence across all configured system groups and produce a structured report with findings, trends, and action items. This command activates the **Morning Check Operator** agent behavior defined in `agents/morning-check-operator.md`.
+Execute the daily morning health check sequence across all configured system groups and produce a structured report with findings, trends, and action items. This command activates the **Morning Check Operator** agent behavior defined in `.github/agents/morning-check-operator.agent.md`.
 
 **Input:** None required. Optionally specify a single system group to check (e.g., `production-servers`, `databases`). User input: `$input`
 

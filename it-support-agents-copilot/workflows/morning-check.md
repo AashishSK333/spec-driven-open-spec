@@ -4,7 +4,7 @@ Orchestrates the daily operational health check sequence across all system group
 
 ## References
 
-- **Agent**: `agents/morning-check-operator.md`
+- **Agent**: `.github/agents/morning-check-operator.agent.md`
 - **Spec**: `specs/morning-checks.md`
 - **Config**: `config/framework.yaml` (system groups, schedule, notification channels)
 - **Environment**: `config/environments/<active>.yaml` (thresholds)

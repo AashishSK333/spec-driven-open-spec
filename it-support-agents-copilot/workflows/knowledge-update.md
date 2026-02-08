@@ -4,7 +4,7 @@ Orchestrates the continuous improvement of the knowledge base by scanning resolv
 
 ## References
 
-- **Agent**: `agents/knowledge-curator.md`
+- **Agent**: `.github/agents/knowledge-curator.agent.md`
 - **Spec**: `specs/incident-management.md` (closure criteria, pattern tracking)
 - **Config**: `config/framework.yaml`
 - **Template**: `templates/knowledge-article.md`

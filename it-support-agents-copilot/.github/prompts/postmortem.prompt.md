@@ -9,7 +9,7 @@ tools:
   - report-generation
 ---
 
-Generate a comprehensive post-incident review report by analyzing the full incident history, log data, and resolution details. Identify improvement areas and propose spec/runbook updates. This command activates the **Incident Responder** agent in post-incident review mode (see `agents/incident-responder.md`).
+Generate a comprehensive post-incident review report by analyzing the full incident history, log data, and resolution details. Identify improvement areas and propose spec/runbook updates. This command activates the **Incident Responder** agent in post-incident review mode (see `.github/agents/incident-responder.agent.md`).
 
 **Input:** An incident ticket ID (e.g., `INC0012345`). The incident should be in Resolved or Closed status. User input: `$input`
 

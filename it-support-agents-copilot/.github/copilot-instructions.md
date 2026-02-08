@@ -13,7 +13,6 @@ This is an **autonomy-aware** framework with progressive capabilities based on t
 - **`knowledge/`** — Troubleshooting guides and operational procedures
 - **`config/`** — Framework configuration including autonomy levels and environment settings
 - **`templates/`** — Output document templates (incident reports, morning check reports, knowledge articles)
-- **`agents/`** — Detailed agent persona definitions (reference documentation)
 - **`workflows/`** — Multi-step process orchestrations (reference documentation)
 - **`integrations/`** — Field mappings and alert mappings for external systems
 - **`.github/agents/`** — Copilot custom agent definitions

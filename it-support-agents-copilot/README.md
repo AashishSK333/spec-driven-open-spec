@@ -58,12 +58,11 @@ Invoke custom prompts using `/promptName` in GitHub Copilot Chat:
 it-support-agents-copilot/
 ├── .github/
 │   ├── copilot-instructions.md          # Global behavioral instructions
-│   ├── prompts/                         # Custom slash commands (6)
 │   ├── agents/                          # Custom agents (5)
+│   ├── prompts/                         # Custom slash commands (6)
 │   └── skills/                          # Atomic agent skills (9)
 ├── .vscode/
 │   └── mcp.json                         # MCP server configurations (Jira, Slack, etc.)
-├── agents/                              # Detailed agent persona docs (reference)
 ├── workflows/                           # Multi-step orchestration docs (reference)
 ├── specs/                               # Behavioral specifications (5 files)
 ├── runbooks/                            # Operational procedures (5 files)
@@ -199,9 +198,9 @@ This project is the **GitHub Copilot** equivalent of the [`it-support-agents/`](
 | Feature | Claude Code | GitHub Copilot |
 |---|---|---|
 | **Commands** | `.claude/commands/*.md` | `.github/prompts/*.prompt.md` |
-| **Agents** | `agents/*.md` (activated by commands) | `.github/agents/*.agent.md` (invoked as @agentName) |
+| **Agents** | `.claude/agents/*.md` (activated by commands) | `.github/agents/*.agent.md` (invoked as @agentName) |
 | **Skills** | `.claude/skills/*/SKILL.md` | `.github/skills/*/SKILL.md` (same format) |
-| **Workflows** | `workflows/*.md` (standalone files) | Agent handoffs + reference docs |
+| **Workflows** | `workflows/*.md` (standalone files) | Agent handoffs + `workflows/*.md` (reference docs) |
 | **MCP Config** | `integrations/*/mcp-config.json` (5 files) | `.vscode/mcp.json` (1 consolidated file) |
 | **Global Instructions** | `CLAUDE.md` | `.github/copilot-instructions.md` |
 

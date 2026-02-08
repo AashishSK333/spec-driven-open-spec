@@ -11,7 +11,7 @@ tools:
   - sla-check
 ---
 
-Process a service request by validating completeness, checking approvals, finding the matching fulfillment procedure, executing it, and confirming completion with the requestor. This command activates the **Request Fulfiller** agent behavior defined in `agents/request-fulfiller.md`.
+Process a service request by validating completeness, checking approvals, finding the matching fulfillment procedure, executing it, and confirming completion with the requestor. This command activates the **Request Fulfiller** agent behavior defined in `.github/agents/request-fulfiller.agent.md`.
 
 **Input:** A service request ticket ID (e.g., `REQ0001234`) or a description of the request. User input: `$input`
 
