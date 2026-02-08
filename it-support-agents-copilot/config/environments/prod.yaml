@@ -1,0 +1,59 @@
+# Production Environment Configuration
+
+environment: production
+active_autonomy_level: 1                # Start at Level 1 (Assisted)
+
+integrations:
+  jira:
+    instance: https://your-org.atlassian.net
+    project_key: ITSUP
+    auth_method: oauth
+    issue_types:
+      incident: Incident
+      service_request: Service Request
+      change: Change Request
+
+  monitoring:
+    provider: your-monitoring-tool       # e.g., datadog, nagios, prometheus
+    api_base: https://monitoring.your-org.com
+    auth_method: api_key
+
+  slack:
+    workspace: your-org
+    default_channel: "#it-ops"
+    bot_name: IT Support Agent
+
+  # cmdb:
+  #   provider: your-cmdb-tool
+  #   api_base: https://cmdb.your-org.com
+
+# SLA definitions (override defaults for production)
+sla:
+  priorities:
+    1:
+      name: Critical
+      response_time_minutes: 15
+      resolution_time_hours: 4
+    2:
+      name: High
+      response_time_minutes: 30
+      resolution_time_hours: 8
+    3:
+      name: Medium
+      response_time_minutes: 120
+      resolution_time_hours: 24
+    4:
+      name: Low
+      response_time_minutes: 480
+      resolution_time_hours: 72
+
+  # System health thresholds
+  thresholds:
+    cpu_warning_percent: 80
+    cpu_critical_percent: 95
+    memory_warning_percent: 85
+    memory_critical_percent: 95
+    disk_warning_percent: 80
+    disk_critical_percent: 90
+    response_time_warning_ms: 2000
+    response_time_critical_ms: 5000

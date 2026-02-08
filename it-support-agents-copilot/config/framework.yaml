@@ -1,0 +1,54 @@
+# IT Support Agent Framework — Core Configuration
+
+framework:
+  name: IT Support Agent Framework
+  version: "1.0.0"
+  description: AI-assisted IT support automation for incident, request, and operations management
+
+# Active autonomy level (1-4). See autonomy-levels.yaml for definitions.
+active_autonomy_level: 1
+
+# Active environment config. See environments/ directory.
+active_environment: prod
+
+# Enabled integrations. Each must have a corresponding directory in integrations/.
+enabled_integrations:
+  - jira
+  - monitoring
+  - slack
+  # - email         # Uncomment when email MCP is configured
+  # - cmdb          # Uncomment when CMDB MCP is configured
+
+# Morning check schedule
+morning_checks:
+  enabled: true
+  schedule: "08:00"                    # Local time to begin checks
+  timezone: "UTC"
+  notification_channel: "#it-ops"
+  report_format: templates/morning-check-report.md
+  system_groups:
+    - name: production-servers
+      description: All production application and web servers
+      check_types: [connectivity, services, resources]
+    - name: databases
+      description: Production database clusters
+      check_types: [connectivity, services, resources, replication]
+    - name: network
+      description: Core network devices and services
+      check_types: [connectivity, latency]
+    - name: security
+      description: Security infrastructure (firewalls, IDS, VPN)
+      check_types: [connectivity, services, certificate_expiry]
+
+# Default notification settings
+notifications:
+  default_channel: "#it-ops"
+  incident_channel: "#it-incidents"
+  major_incident_channel: "#major-incidents"
+  morning_check_channel: "#it-ops"
+
+# Knowledge base search paths (relative to repo root)
+knowledge_paths:
+  - knowledge/
+  - runbooks/
+  - specs/

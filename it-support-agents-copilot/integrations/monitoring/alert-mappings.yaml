@@ -1,0 +1,80 @@
+# Alert Mappings
+# Maps monitoring system alert severities to framework priority levels
+# and alert types to incident categories.
+
+severity_mapping:
+  # Monitoring severity → Framework priority
+  # Adjust these mappings based on your monitoring tool's severity levels
+  critical: 1          # P1 — Critical
+  high: 2              # P2 — High
+  warning: 3           # P3 — Medium
+  info: 4              # P4 — Low
+  # Datadog-specific
+  error: 2             # P2 — High
+  warn: 3              # P3 — Medium
+  ok: null             # No incident — alert resolved
+  # Nagios-specific
+  CRITICAL: 1
+  WARNING: 3
+  UNKNOWN: 3
+  OK: null
+  # Prometheus-specific
+  firing: 2            # Default to P2, override by alert rule if specified
+  resolved: null
+
+alert_type_mapping:
+  # Monitoring alert type → Framework incident category
+  host_unreachable:
+    category: Infrastructure
+    subcategory: Server
+    suggested_runbook: runbooks/server-unresponsive.md
+  high_cpu:
+    category: Infrastructure
+    subcategory: Server
+    suggested_runbook: runbooks/server-unresponsive.md
+  high_memory:
+    category: Infrastructure
+    subcategory: Server
+    suggested_runbook: runbooks/server-unresponsive.md
+  disk_space:
+    category: Infrastructure
+    subcategory: Storage
+    suggested_runbook: runbooks/disk-space-critical.md
+  service_down:
+    category: Application
+    subcategory: Service
+    suggested_runbook: runbooks/server-unresponsive.md
+  certificate_expiry:
+    category: Security
+    subcategory: Certificate
+    suggested_runbook: runbooks/certificate-expiry.md
+  database_connection:
+    category: Infrastructure
+    subcategory: Database
+    suggested_runbook: runbooks/database-connection-failure.md
+  vpn_tunnel_down:
+    category: Infrastructure
+    subcategory: Network
+    suggested_runbook: runbooks/vpn-connectivity.md
+  authentication_failure:
+    category: Security
+    subcategory: Authentication
+    suggested_runbook: null
+  replication_lag:
+    category: Infrastructure
+    subcategory: Database
+    suggested_runbook: runbooks/database-connection-failure.md
+  backup_failure:
+    category: Infrastructure
+    subcategory: Backup
+    suggested_runbook: null
+
+# Fields to extract from monitoring alerts when creating incidents
+alert_to_incident_fields:
+  summary: "alert_name"
+  description: "alert_description"
+  affected_host: "host"
+  affected_service: "service"
+  alert_value: "current_value"
+  alert_threshold: "threshold"
+  alert_start_time: "triggered_at"
